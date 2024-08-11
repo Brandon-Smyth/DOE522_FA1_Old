@@ -16,13 +16,19 @@ jobs:
           dotnet-version: '7.x'
         
       - name: Restore dependencies
-        run: dotnet restore Programm.cs
+        run: dotnet restore
         
       - name: Build
-        run: dotnet build Program.cs --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish Program.c --configuration Release --no-build --output ./output
+        run: dotnet publish --configuration Release --no-build --output ./output
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./output
 
   test:
     name: Test
