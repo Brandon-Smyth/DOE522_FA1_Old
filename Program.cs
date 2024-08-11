@@ -11,7 +11,7 @@ namespace TestConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello world!");
-           console.WriteLine("This is a second line of code with bad syntax");
+            Console.WriteLine("This is a second line of code with fixed syntax");
         }
     }
 }
