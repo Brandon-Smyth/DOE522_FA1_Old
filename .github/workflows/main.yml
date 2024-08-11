@@ -16,13 +16,13 @@ jobs:
           dotnet-version: '7.x'
         
       - name: Restore dependencies
-        run: dotnet restore src/Programm.cs
+        run: dotnet restore Programm.cs
         
       - name: Build
-        run: dotnet build src/Program.cs --configuration Release --no-restore
+        run: dotnet build Program.cs --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish src/Program.c --configuration Release --no-build --output ./output
+        run: dotnet publish Program.c --configuration Release --no-build --output ./output
 
   test:
     name: Test
