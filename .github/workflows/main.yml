@@ -53,3 +53,20 @@ jobs:
         run: |
           echo "Deploying application..."
           # Doing an echo as our Azure Portal license expired.
+
+  notify:
+      runs-on: ubuntu-latest
+      needs: [build, test, deploy]
+      if: failure()  # Only run this job if any of the previous jobs fail
+      steps:
+        - name: Send Email Notification
+          uses: dawidd6/action-send-mail@v3
+          with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{ secrets.EMAIL_USERNAME }}
+            password: ${{ secrets.EMAIL_PASSWORD }}
+            subject: GitHub Actions Job Failed
+            body: The build or deployment job has failed. Please check the logs.
+            to: brandonsmyth.work@gmail.com
+            from: itzbanditzyt@gmail.com
