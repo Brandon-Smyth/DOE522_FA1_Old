@@ -56,6 +56,7 @@ jobs:
 
   notify:
       runs-on: ubuntu-latest
+      needs: [build, test, deploy]
       if: failure()  # Only run this job if any of the previous jobs fail
       steps:
         - name: Send Email Notification
