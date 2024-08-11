@@ -12,6 +12,6 @@ namespace TestConsoleApp
         {
             Console.WriteLine("Hello world!");
             console.WriteLine("This is a second line of code with bad syntax to send a mail")
-        }
+        
     }
 }
